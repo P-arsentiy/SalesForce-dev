@@ -1,0 +1,67 @@
+<template>
+    <div class="slds-var-m-around_medium cards-box">
+                <template for:each={products} for:item="product">
+                    <c-menu-card key={product.Id} product={product} ondataresponce={handleCollectData}>
+                    </c-menu-card>
+                </template>
+    </div>
+    <template if:true={isModalOpen}>
+        <!-- Modal start -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Making Order</h2>
+                </header>
+                <!-- Body -->
+                <div class="slds-modal__content slds-m-bottom_x-large" id="modal-content-id-1">
+                        <div class="slds-p-around_small">
+                            <lightning-input type="datetime" name="inputTime" label="When should the order be ready?" required value={orderToCreate.OrderCompletionTime__c} min={nowPlusThirty} onchange={handleDateTime}>
+                            </lightning-input>
+                        </div>
+                        <div class="slds-p-around_small">
+                            <lightning-input type="checkbox" name="inputMailing" label="Mail me when Ready" value={orderToCreate.EmailWhenReady__c} onchange={handleEmailWhenReady}>
+                            </lightning-input>
+                        </div>
+                        <div class="slds-p-around_small">
+                            <lightning-input type="text" name="inputComment" label="Comment" value={orderToCreate.Description__c} onchange={handleComment}>
+                            </lightning-input>
+                        </div>
+                        <div class="slds-p-around_small order-price">
+                            Order Total Price: €{orderTotalPrice}
+                        </div>
+                        <div>
+                            <lightning-datatable data={orderItemsData}
+                            columns={columns}
+                            key-field="id"
+                            show-row-number-column
+                            hide-checkbox-column
+                             >
+                        </lightning-datatable>
+                        </div>
+                        <div class="slds-p-around_small">
+                            <lightning-input class="inline-elems" type="checkbox" name="inputAgree" label="I agree with terms of service." required value={agreement} onchange={handleAgreement}>
+                            </lightning-input>
+                            <button class="slds-button slds-button_neutral inline-elems" onclick={navigateToTermsPage} title="Terms of service">Terms of service</button>
+                        </div>
+                        <footer class="slds-modal__footer modal-footer">
+                            <button class="slds-button slds-button_brand submit-button transition1" onclick={handleSubmit} title="Submit">Submit</button>
+                        </footer>
+                        
+                </div>
+                <!-- Footer -->
+                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <footer class="modal-footer" >
+        <button class="slds-button slds-button_brand order-button transition1" onclick={openModal} title="Make Order">Make Order</button>
+    </footer>
+</template>

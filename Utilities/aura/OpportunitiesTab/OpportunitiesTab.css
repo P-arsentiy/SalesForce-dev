@@ -1,0 +1,15 @@
+.THIS{
+
+}
+.THIS .iconRed {
+    --lwc-colorTextIconDefault: red; 
+}
+.THIS .iconYellow{
+    --lwc-colorTextIconDefault: yellow; 
+}
+.THIS .iconGreen {
+    --lwc-colorTextIconDefault: green; 
+}
+.THIS .resultIcon {
+    --lwc-colorTextIconDefault: #1199E8;
+}

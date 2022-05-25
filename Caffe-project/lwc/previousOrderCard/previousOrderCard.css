@@ -1,0 +1,124 @@
+span{
+    padding: 32px;
+}
+.button-text{
+    text-align: center;
+    width: 45%;
+    padding: 5px;
+}
+.button-datails-wrap {
+    display: inline-block;
+}
+.button-repeat-orders{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 45px;
+    font-size: 16px;
+}
+.button-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 45px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.card-order-details{
+    height: 0px;
+    overflow: hidden;
+    transition: 1s linear;
+}
+.details-full-width{
+    margin-left: -33.33%;
+    margin-right: -33.33%;
+}
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.order-price{
+    text-align: center;
+    font-size: large;
+}
+
+.order-card{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 35px;
+    box-shadow: 1px 6px rgb(0 0 0 / 5%);
+    border-radius: 6px;
+}
+.order-card:hover{
+    box-shadow: 1px 6px rgb(67, 214, 207);
+}
+.order-card-header{
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+    font-weight: 500;
+}
+.card-header-item-date {
+    text-align: left;
+}
+.card-header-item-order {
+    text-align: right;
+}
+.card-header-item {
+    line-height: 1.2;
+}
+.card-order-line-hidden {
+    overflow: hidden;
+    height: 0px;
+    padding: 0;
+    width: 100%;
+}
+.order-card-info {
+    padding: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    font-size: 14px;
+}
+.order-card-info-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+.item-title{
+    font-weight: 300;
+    color: #959595;
+}
+.item-text{
+    font-weight: 400;
+}
+.order-card-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.order-card-button {
+    height: 40px;
+    font-size: large;
+}
+.transition1{
+    transition: 0.5s;
+}
+.inline-elems{
+    display: inline-block;
+}

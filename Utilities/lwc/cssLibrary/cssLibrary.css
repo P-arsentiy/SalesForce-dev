@@ -1,0 +1,15 @@
+c-contact-card-item {
+    border: solid var(--lwc-borderWidthThin, 1px) #ecebea;
+    border-radius: var(--lwc-borderRadiusMedium, 4px);
+    padding: 0 var(--lwc-varSpacingXxxSmall, 2px);
+}
+
+/* c-contact-card-item:before {
+    content: 'c-contact-card-item';
+    color: rgb(221, 219, 218);
+    position: absolute;
+    top: -9px;
+    left: var(--lwc-varSpacingXxSmall, 4px);
+    background-color: var(--lwc-colorBackgroundAlt, #6a4e4e);
+    padding: 0 var(--lwc-varSpacingXxSmall, 4px);
+} */

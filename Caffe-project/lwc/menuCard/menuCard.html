@@ -1,0 +1,21 @@
+<template>
+    <template if:true={product}>
+        <div class="card transition1">
+            <img src={product.Image_Link__c} alt="Position Image"/>
+            <div class="name-text">{product.Name}</div>
+            <div class="card-description">
+                <div class="slds-text-color_inverse-weak">{product.Description__c} </div>
+            </div>  
+            <footer class="buttons-footer">
+                <div class="price-text">Price: €{product.UnitPrice} </div>
+                <button class="slds-button slds-button_neutral buttons-text transition1" onclick={amountMinus} title="Minus">-</button>
+                <div class="amount-text">{amount}</div>
+                <button class="slds-button slds-button_neutral buttons-text transition1" onclick={amountPlus} title="Plus">+</button>
+            </footer>
+        </div>
+            
+    </template>
+    <template if:false={product}>
+        <p>No product data available.</p>
+    </template>
+</template>

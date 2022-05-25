@@ -1,0 +1,12 @@
+<template>
+        <div class="slds-var-m-around_medium">
+            <div class="cardbox">
+                <lightning-layout horizontal-align="spread" oncontactsaved={handleContactSaved}>
+                    <template for:each={contacts} for:item="contact">
+                        <c-contact-card-item class="slds-show slds-is-relative" key={contact.Id} contact={contact}>
+                        </c-contact-card-item>
+                    </template>
+                </lightning-layout>
+            </div>
+        </div>
+</template>

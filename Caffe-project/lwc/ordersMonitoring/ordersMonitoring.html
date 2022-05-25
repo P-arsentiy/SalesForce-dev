@@ -1,0 +1,14 @@
+<template>
+    <div class="main-styles">  
+        <div class="main-styles-componentt">
+            <div class="orders-history">
+                <div class="history-table">
+                    <template for:each={orders} for:item="order">
+                        <c-orders-monitoring-item key={order.Id} order={order} orderitems={orderitems}>
+                        </c-orders-monitoring-item>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

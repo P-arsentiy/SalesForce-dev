@@ -1,0 +1,15 @@
+<aura:component controller = "OpportunitiesTabController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="Account" type="Account" />
+    <aura:attribute name="Opportunities" type="Opportunity" />
+    <aura:attribute name="Columns" type="List" />
+    <aura:registerEvent name="loadedEvent" type="c:summaryLoadedEvent" />
+    <aura:handler name="init" value="{!this}" action="{!c.fillOpportunitiesTab}" />
+    <aura:handler event="c:customFilterEvent" action="{!c.handleFilterEvent}" />
+    <lightning:card iconName="standard:opportunity" title="Opportunities Summary">
+        <lightning:datatable data="{! v.Opportunities }" columns="{! v.Columns }" onrowaction="{! c.handlePDFAction }" keyField="Id" hideCheckboxColumn="true"/>
+    </lightning:card>
+</aura:component>	
+
+
+

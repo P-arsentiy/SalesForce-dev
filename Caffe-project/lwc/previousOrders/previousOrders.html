@@ -1,0 +1,29 @@
+<template>
+    <div class="main-styles">  
+        <div class="main-styles-componentt">
+            <div class="orders-history">
+                <div class="history-table">
+                    <div class="thread">
+                        <div class="thread-elems">
+                            <div class="date thread-elems-style">Date And Time</div>
+                            <div class="order_name thread-elems-style">Order Number</div>
+                            <div class="status thread-elems-style">Status</div>
+                            <div class="price thread-elems-style">Price</div>
+                            <div class="hidden thread-elems-style">Buttons</div>
+                        </div>
+                    </div>
+                    <template for:each={orders} for:item="order">
+                        <c-previous-orders-table key={order.Id} order={order} orderitems={orderItems}>
+                        </c-previous-orders-table>
+                    </template>
+                </div>
+                <div class="order-cards">
+                    <template for:each={orders} for:item="order">
+                        <c-previous-order-card key={order.Id} order={order} orderitems={orderItems}>
+                        </c-previous-order-card>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

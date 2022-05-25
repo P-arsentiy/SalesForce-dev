@@ -1,0 +1,82 @@
+div{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+.order-cards{
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.main-styles{
+    overflow: auto;
+    position: static;
+    background-color: white;
+}
+.main-styles-component{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.history-title{
+    margin-bottom: 9px;
+    text-align: center;
+    font-size: 32px;
+    line-height: 35px;
+}
+.orders-history{
+    min-height: 60vh;
+    background-color: #e7e7e7;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 20px;
+}
+.history-table{
+    margin-bottom: 60px;
+    margin-top: 0;
+    width: 100%;
+    font-weight: 300;
+    border-collapse: collapse;
+}
+.thread {
+    color: #999;
+    font-size: 14px;
+    font-size: 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.thread-elems{
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+}
+.thread-elems-style{
+    text-align: left;
+    padding: 0.938em 0.750em;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.date{
+    width: 13%;
+    width: 12em;
+}
+.order_name{
+    width: 10%;
+    width: 12em;
+}
+.status{
+    width: 11%;
+    width: 12em;
+}
+.price{
+    width: 10%;
+    width: 11em;
+}
+.hidden{
+    opacity: 0;
+    width: 15%;
+    width: 22em;
+}

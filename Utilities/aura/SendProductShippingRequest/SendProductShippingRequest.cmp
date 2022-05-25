@@ -1,0 +1,49 @@
+<aura:component controller="SendProductShippingRequestController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+        <aura:attribute name="recordId" type="String" access="public" />
+        <aura:attribute name="Account" type="Account" />
+        <aura:attribute name="newRequest" type="ShippingRequest__c" default="{ 'sobjectType': 'ShippingRequest__c',
+                            'OwnedBy__c' : '',
+                            'Product_Name__c': '',
+                            'Shipping_Quantity__c': 0,
+                            'Shipping_Address__c': '',
+                            'Shipping_Name__c': '',
+                            'TakeShippingFee__c': false }" />
+        <aura:attribute name="isLoaded" type="Boolean" default="false" />
+        <aura:if isTrue="{!v.isLoaded}">
+            <div class="exampleHolder">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </div>
+            <aura:set attribute="else" >
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:input aura:id="productName" label="Product Name" name="productName" placeholder="Input name..."
+                    value="{!v.newRequest.Product_Name__c}" required="true" />
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:input aura:id="shippingQuantity" label="Shipping Quantity" name="shippingQuantity"
+                    value="{!v.newRequest.Shipping_Quantity__c}" required="true" />
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:input aura:id="shippingAddress" label="Shipping Address" name="shippingAddress"
+                    placeholder="Input address..." value="{!v.newRequest.Shipping_Address__c}" required="true" />
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:input aura:id="shippingName" label="Shipping Name" name="shippingName"
+                    placeholder="Input shipping name..." value="{!v.newRequest.Shipping_Name__c}" required="true" />
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:input aura:id="takeShippingFee" type="checkbox" name="takeShippingFee" label="Take Shipping Fee"
+                    value="{! v.newRequest.TakeShippingFee__c }" />
+            </lightning:layoutItem>
+            
+            <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                <lightning:button variant="Neutral" class="slds-button" label="Cancel" onclick="{!c.handleClose}" />
+                <lightning:button variant="Brand" class="slds-button" label="Send Shipping Request" onclick="{!c.sendRequest}" />
+            </div>
+            </aura:set>
+        </aura:if>
+
+</aura:component>

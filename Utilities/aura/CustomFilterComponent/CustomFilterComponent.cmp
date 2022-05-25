@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="filterField" type = "String"/>
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />
+    <aura:registerEvent name="filterEvent" type="c:customFilterEvent"/>
+    <aura:handler event="c:summaryLoadedEvent" action="{!c.handleLoadedEvent}"/>
+    <aura:if isTrue="{!v.isLoaded}">
+    <lightning:card iconName="standard:filter" title="Filter Related Records">
+        <lightning:layoutItem padding="around-small" size="12">
+            <lightning:input aura:id="customFilter" label="Filter input:" name="filterName" placeholder="type something..."
+                value="{!v.filterField}" onchange="{!c.fireFilterEvent}"/>
+        </lightning:layoutItem>
+    </lightning:card>
+    <aura:set attribute="else">
+    <lightning:card iconName="standard:filter" title="Filter Related Records">
+        <lightning:layoutItem padding="around-small" size="3">
+            <p>Waiting for opepning Opportunities Summary...</p>
+            <lightning:spinner alternativeText="Loading" size="small" />
+        </lightning:layoutItem>
+    </lightning:card>
+    </aura:set>
+    </aura:if>
+    
+</aura:component>	

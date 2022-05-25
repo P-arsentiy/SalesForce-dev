@@ -1,0 +1,92 @@
+<template>
+    <template if:true={order}>
+        <div class="order-card">
+            <div class="order-card-header">
+                <lightning-formatted-date-time class="card-header-item card-header-item-date"
+                     value={order.CreatedDate}
+                     year="numeric"
+                     month="numeric"
+                     day="numeric"
+                     hour="2-digit"
+                     minute="2-digit">
+                </lightning-formatted-date-time>
+                <div class="card-header-item card-header-item-order">{order.Name}</div>
+            </div>
+            <div class="order-card-info">
+                <div class="order-card-info-item">
+                    <div class="item-title">Status: </div>
+                    <div class="tem-text">{order.Status__c} </div>
+                </div>
+                <div class="order-card-info-item">
+                    <div class="item-title">Price: </div>
+                    <div class="tem-text">€{order.TotalPrice__c}</div>
+                </div> 
+            </div>
+            <div class="order-card-actions">
+                <div class="order-card-button">
+                        <button class="slds-button slds-button_brand order-card-button transition1" onclick={openModal} title="showOrderItems">
+                            Repeat Order</button>
+            </div>
+        </div>
+        
+    </div>
+    </template>
+    <template if:false={order}>
+        <p>No order data available.</p>
+    </template>
+    <template if:true={isModalOpen}>
+        <!-- Modal start -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Repeat Order
+                    </h2>
+                </header>
+                <!-- Body -->
+                <div class="slds-modal__content slds-m-bottom_x-large" id="modal-content-id-1">
+                    <div class="slds-p-around_small">
+                        <lightning-input type="datetime" name="inputTime" label="When should the order be ready?" required value={orderToCreate.OrderCompletionTime__c} min={nowPlusThirty} onchange={handleDateTime}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_small">
+                        <lightning-input type="checkbox" name="inputMailing" label="Mail me when Ready" value={orderToCreate.EmailWhenReady__c} onchange={handleMailing}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_small">
+                        <lightning-input type="text" name="inputComment" label="Comment" value={orderToCreate.Description__c} onchange={handleComment}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-p-around_small order-price">
+                        Order Total Price: €{order.TotalPrice__c}
+                    </div>
+                    <div>
+                        <lightning-datatable data={correctOrderItems}
+                        columns={columns}
+                        key-field="id"
+                        show-row-number-column
+                        hide-checkbox-column >
+                    </lightning-datatable>
+                    </div>
+                    <div class="slds-p-around_small">
+                        <lightning-input class="inline-elems" type="checkbox" name="inputAgree" label="I agree with terms of service." required value={agreement} onchange={handleAgreement}>
+                        </lightning-input>
+                        <button class="slds-button slds-button_neutral inline-elems" onclick={navigateToTermsPage} title="Terms of service">Terms of service</button>
+                    </div>
+                    <footer class="slds-modal__footer modal-footer">
+                        <button class="slds-button slds-button_brand" onclick={handleSubmit} title="Submit">Repeat Order</button>
+                    </footer>
+                </div>
+                <!-- Footer -->
+                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

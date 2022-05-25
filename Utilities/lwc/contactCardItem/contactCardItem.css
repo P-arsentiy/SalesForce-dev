@@ -1,0 +1,14 @@
+.card {
+    width: 180px;
+    height: 240px;
+    box-shadow: 3px 3px 2px 3px #808080; /* Тень */
+    padding: 10px; /* Поля вокруг текста */
+    border-radius: 8px; /* Радиус скругления */
+}
+.nameText{
+    text-align: center;
+    text-transform: uppercase;
+}
+.central{
+    text-align: center;
+}
